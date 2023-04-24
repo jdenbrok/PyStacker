@@ -79,8 +79,10 @@ def get_stack(fnames, prior_lines, lines, dir_save, dir_data ='./../../data/Data
             raise TypeError("Input Database must me of format .idl or .npy")
 
         # determine xtype for this galaxy -> x axis !!!!!!!!!!!!!!!!!
-        xvec = this_data[xtype]
-
+        try:
+            xvec = this_data[xtype]
+        except:
+            xvec = this_data["INT_VAL_"+xtype.upper()]
         ra = this_data["ra_deg"]
         decl = this_data["dec_deg"]
         
